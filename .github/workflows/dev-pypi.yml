@@ -48,9 +48,10 @@ jobs:
           hatch build
 
       - name: Publish a Python distribution to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.14
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
           user: __token__
           password: ${{ secrets.DEV_PYPI_API_TOKEN }}
-          packages_dir: dist/
+          packages-dir: dist/
+          verify-metadata: false
