@@ -13,16 +13,6 @@ classifiers = [
 ]
 dynamic = ["version"]
 
-[project.urls]
-"Github" = "https://github.com/AlexandreSenpai/Enma"
-
-[project.optional-dependencies]
-google_drive = [
-  "google-api-python-client>=2.0.0",
-  "google-auth-httplib2>=0.1.0",
-  "google-auth-oauthlib>=0.4.0",
-]
-
 dependencies = [
     "beautifulsoup4==4.12.3",
     "expiringdict==1.2.2",
@@ -35,6 +25,17 @@ dev = [
     "pytest-cov==4.1.0",
     "pytest==8.3.2",
 ]
+
+[project.optional-dependencies]
+google_drive = [
+  "google-api-python-client>=2.0.0",
+  "google-auth-httplib2>=0.1.0",
+  "google-auth-oauthlib>=0.4.0",
+]
+
+[project.urls]
+"Github" = "https://github.com/AlexandreSenpai/Enma"
+"Documentation" = "https://docs.minorin.io/enma"
 
 [build-system]
 requires = ["hatchling", "hatch-vcs"]
