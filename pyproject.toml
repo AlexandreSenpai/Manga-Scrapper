@@ -1,5 +1,6 @@
 [project]
 name = "enma"
+version = "2.4.4"
 description = "Enma is a Python library designed to fetch manga and doujinshi data from many sources."
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9.0"
@@ -11,7 +12,6 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent"
 ]
-dynamic = ["version"]
 
 [project.urls]
 "Github" = "https://github.com/AlexandreSenpai/Enma"
