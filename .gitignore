@@ -58,3 +58,5 @@ git
 libbz2-dev
 libncursesw5-dev
 main.py
+
+**/.pytest_cache
