@@ -203,16 +203,16 @@ toml = [
 
 [[package]]
 name = "enma"
-version = "2.4.5.dev0+gc9b40af.d20250111"
+version = "2.4.5.dev2+g51847f2.d20250111"
 source = { editable = "." }
+
+[package.optional-dependencies]
 dependencies = [
     { name = "beautifulsoup4" },
     { name = "expiringdict" },
     { name = "pydantic" },
     { name = "requests" },
 ]
-
-[package.optional-dependencies]
 google-drive = [
     { name = "google-api-python-client" },
     { name = "google-auth-httplib2" },
@@ -227,13 +227,13 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "beautifulsoup4", specifier = "==4.12.3" },
-    { name = "expiringdict", specifier = "==1.2.2" },
+    { name = "beautifulsoup4", marker = "extra == 'dependencies'", specifier = "==4.12.3" },
+    { name = "expiringdict", marker = "extra == 'dependencies'", specifier = "==1.2.2" },
     { name = "google-api-python-client", marker = "extra == 'google-drive'", specifier = ">=2.0.0" },
     { name = "google-auth-httplib2", marker = "extra == 'google-drive'", specifier = ">=0.1.0" },
     { name = "google-auth-oauthlib", marker = "extra == 'google-drive'", specifier = ">=0.4.0" },
-    { name = "pydantic", specifier = "==2.8.2" },
-    { name = "requests", specifier = "==2.32.3" },
+    { name = "pydantic", marker = "extra == 'dependencies'", specifier = "==2.8.2" },
+    { name = "requests", marker = "extra == 'dependencies'", specifier = "==2.32.3" },
 ]
 
 [package.metadata.requires-dev]

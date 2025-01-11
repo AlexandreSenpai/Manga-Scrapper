@@ -1,11 +1,13 @@
-name: Development Pypi
+name: Development PyPI
+
 on:
   push:
     tags:
       - "*-*"
+
 jobs:
   testing-deploy:
-    name: Pypi
+    name: PyPI
     runs-on: ubuntu-latest
     environment:
       name: pypi
@@ -14,39 +16,44 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@master
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
 
-      - name: Preparing the environment
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; else python -m pip install beautifulsoup4 requests pydantic expiringdict pytest; fi
+          python -m pip install pip-tools
+          pip install hatch pytest pytest-cov
+          pip-compile pyproject.toml -o requirements-build.txt --all-extras
+          pip install -r requirements-build.txt
 
-      - name: Starting Testing Suites
+      - name: Run tests
         run: |
-          ENMA_CACHING_STATE=disabled \
-          pytest ./tests
+          ENMA_CACHING_STATE=disabled hatch run pytest
 
-      - name: Upload Report to Codecov
-        uses: codecov/codecov-action@v1
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
+          files: ./coverage.xml
           flags: pytest
 
-      - name: Building and Deploying
+      - name: Build the package
         run: |
-          python -m pip install build twine wheel setuptools_scm setuptools
-          python -m build
+          hatch build
 
       - name: Publish a Python distribution to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.8.14
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
           user: __token__
           password: ${{ secrets.DEV_PYPI_API_TOKEN }}
-          packages_dir: dist/
+          packages-dir: dist/
+          verify-metadata: false
+          attestations: false
+          verbose: true
