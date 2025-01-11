@@ -28,7 +28,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install pip-tools
-          pip install hatch
+          pip install hatch pytest pytest-cov
           pip-compile pyproject.toml -o requirements-build.txt --all-extras
           pip install -r requirements-build.txt
 
