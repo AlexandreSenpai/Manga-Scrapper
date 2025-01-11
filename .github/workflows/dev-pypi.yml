@@ -55,3 +55,5 @@ jobs:
           password: ${{ secrets.DEV_PYPI_API_TOKEN }}
           packages-dir: dist/
           verify-metadata: false
+          attestations: false
+          verbose: true
