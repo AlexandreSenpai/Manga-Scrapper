@@ -41,20 +41,6 @@ google_drive = [
 requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
-[tool.hatch.build]
-exclude = [
-  "tests/",
-  "requirements.txt",
-  "uv.lock",
-  ".gitignore",
-  ".python-version",
-  "docs/",
-  ".vscode/",
-  ".github/",
-  "README.md",
-  "MANIFEST.in"
-]
-
 [tool.hatch.version]
 source = "vcs"
 
