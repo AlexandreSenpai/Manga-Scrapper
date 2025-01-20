@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./docs/images/enma.png" align="center" width="50%">
+    <img src="./docs/images/minori-enma.jpg" align="center" width="50%">
 </p>
 
 <center>
@@ -15,7 +15,6 @@
 </center>
 
 # Enma
-
 Enma is a Python library designed to fetch manga and doujinshi data from many sources. It provides a unified interface to interact with different manga repositories, making it easier to retrieve manga details, search for manga, paginate through results, and fetch random manga.
 
 ## :warning: Warning
